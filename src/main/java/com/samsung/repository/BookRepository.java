@@ -11,4 +11,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Override
     @EntityGraph(attributePaths = {"author", "genre", "commentList"}) // делаем меньше запросов к бд (объединяем все в одну бд), решение проблемы (n+1)
     List<Book> findAll();
+
+    List<Book> findByName(String name);
 }
