@@ -17,33 +17,34 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LibDemoService {
 
-    private final AuthorRepository authorRepository;
+    private final AuthorService authorService;
     private final BookRepository bookRepository;
     private final CommentRepository commentRepository;
 
     public void authorDemo() {
 
         System.out.println("==========");
-        List<Author> authorList = authorRepository.findAll();
+        List<Author> authorList = authorService.getAll();
         for (Author author: authorList) {
             System.out.println(author);
         }
         System.out.println("==========");
 
+        authorService.update(1, "Иван");
+
+        System.out.println("==========");
         Author author = Author.builder()
-                .name("Иван")
+                .name("My")
                 .build();
-
-        authorRepository.save(author);
-
-        System.out.println("==========");
-        authorList = authorRepository.findAll();
-        for (Author author1: authorList) {
-            System.out.println(author1);
+        authorService.insert(author);
+        authorList = authorService.getAll();
+        for (Author author2: authorList) {
+            System.out.println(author2);
         }
+
         System.out.println("==========");
 
-        System.out.println(authorRepository.findByName("Имя автора 1"));
+        System.out.println(authorService.getByName("Имя автора 1"));
     }
 
     @Transactional
