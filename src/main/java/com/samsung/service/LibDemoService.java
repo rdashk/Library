@@ -81,7 +81,7 @@ public class LibDemoService {
 
     @Transactional
     public void commentDemo() {
-        //commentService.update(1, "Новый комментарий 1");
+        commentService.update(1, "Новый комментарий 1");
 
         List<Comment> commentList = commentService.getAll();
         for (Comment comment: commentList) {

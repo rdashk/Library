@@ -14,5 +14,5 @@ public interface CommentService {
 
     void deleteById(int id);
 
-    Comment update(int id, String content);
+    void update(int id, String content);
 }

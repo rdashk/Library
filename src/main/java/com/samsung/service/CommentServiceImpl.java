@@ -35,11 +35,8 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public Comment update(int id, String content) {
+    public void update(int id, String content) {
 
-        return commentRepository.save(Comment.builder()
-                .id(id)
-                .content(content)
-                .build());
+        commentRepository.updateCommentById(id, content);
     }
 }
