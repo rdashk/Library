@@ -1,6 +1,9 @@
 package com.samsung.repository;
 
 import com.samsung.domain.Book;
+import com.samsung.repository.AuthorRepository;
+import com.samsung.repository.BookRepository;
+import com.samsung.repository.GenreRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

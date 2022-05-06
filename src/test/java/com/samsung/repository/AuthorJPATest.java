@@ -1,6 +1,7 @@
 package com.samsung.repository;
 
 import com.samsung.domain.Author;
+import com.samsung.repository.AuthorRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
