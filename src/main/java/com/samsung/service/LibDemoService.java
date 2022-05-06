@@ -3,7 +3,6 @@ package com.samsung.service;
 import com.samsung.domain.Author;
 import com.samsung.domain.Book;
 import com.samsung.domain.Comment;
-import com.samsung.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +15,7 @@ public class LibDemoService {
 
     private final AuthorService authorService;
     private final BookSevice bookSevice;
-    private final CommentRepository commentRepository;
+    private final CommentService commentService;
 
     public void authorDemo() {
 
@@ -64,7 +63,8 @@ public class LibDemoService {
         bookSevice.insert(
                 "Название книги 4",
                 "Имя автора 4",
-                "Жанр 3");
+                "Жанр 4");
+
         bookList = bookSevice.getAll();
         for (Book book: bookList) {
             System.out.println(book.getName() + ":");
@@ -81,14 +81,20 @@ public class LibDemoService {
 
     @Transactional
     public void commentDemo() {
-        commentRepository.updateCommentById(1, "Новый комментарий 1");
+        //commentService.update(1, "Новый комментарий 1");
 
-        List<Comment> commentList = commentRepository.findAll();
+        List<Comment> commentList = commentService.getAll();
         for (Comment comment: commentList) {
             System.out.println(comment.getId() + " - " + comment.getContent());
         }
 
-        commentList = commentRepository.findByBookId(2);
+        Comment comment1 = Comment.builder()
+                .content("Комментарий 5")
+                .book(bookSevice.getById(1))
+                .build();
+        commentService.insert(comment1);
+
+        commentList = commentService.getByBookId(1);
         for (Comment comment: commentList) {
             System.out.println(comment.getId() + " - " + comment.getContent());
         }

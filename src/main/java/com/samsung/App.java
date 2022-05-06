@@ -17,12 +17,13 @@ public class App {
 
         ConfigurableApplicationContext context = SpringApplication.run(App.class);
 
-        context.getBean(LibDemoService.class).bookDemo();
-        context.close();
-        /*try {
+        context.getBean(LibDemoService.class).commentDemo();
+        /* Для принудительного закрытия Spring Boot приложения
+        context.close();*/
+        try {
             Console.main(args);
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 }
