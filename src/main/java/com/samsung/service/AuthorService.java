@@ -14,7 +14,7 @@ public interface AuthorService {
 
     Author getByName(String name);
 
-    Author update(int id, String name);
+    Author update(int id, String nameAuthor);
 
     void deleteById(int id);
 }

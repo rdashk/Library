@@ -37,11 +37,11 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
-    public Author update(int id, String name) {
+    public Author update(int id, String nameAuthor) {
 
         Author author = Author.builder()
                 .id(id)
-                .name(name)
+                .name(nameAuthor)
                 .build();
         return authorRepository.save(author);
     }

@@ -3,10 +3,7 @@ package com.samsung.service;
 import com.samsung.domain.Author;
 import com.samsung.domain.Book;
 import com.samsung.domain.Comment;
-import com.samsung.repository.AuthorRepository;
-import com.samsung.repository.BookRepository;
 import com.samsung.repository.CommentRepository;
-import liquibase.pro.packaged.B;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +15,7 @@ import java.util.List;
 public class LibDemoService {
 
     private final AuthorService authorService;
-    private final BookRepository bookRepository;
+    private final BookSevice bookSevice;
     private final CommentRepository commentRepository;
 
     public void authorDemo() {
@@ -50,27 +47,36 @@ public class LibDemoService {
     @Transactional
     public void bookDemo() {
 
-        /*List<Book> bookList = bookRepository.findAll();
+        List<Book> bookList = bookSevice.getAll();
         for (Book book: bookList) {
             System.out.println(book.getName() + ":");
             System.out.println(book.getAuthor().getName() + "," + book.getGenre().getName());
 
             List<Comment> commentList = book.getCommentList();
-            for (Comment comment: commentList) {
-                System.out.println(comment.getContent());
+            if (commentList != null) {
+                for (Comment comment: commentList) {
+                    System.out.println(comment.getContent());
+                }
             }
-        }*/
-        List<Book> bookList1 = bookRepository.findByName("Название книги 3");
-        for (Book book: bookList1) {
+        }
+        System.out.println("==========");
+
+        bookSevice.insert(
+                "Название книги 4",
+                "Имя автора 4",
+                "Жанр 3");
+        bookList = bookSevice.getAll();
+        for (Book book: bookList) {
             System.out.println(book.getName() + ":");
             System.out.println(book.getAuthor().getName() + "," + book.getGenre().getName());
 
             List<Comment> commentList = book.getCommentList();
-            for (Comment comment: commentList) {
-                System.out.println(comment.getContent());
+            if (commentList != null) {
+                for (Comment comment: commentList) {
+                    System.out.println(comment.getContent());
+                }
             }
         }
-
     }
 
     @Transactional
