@@ -17,7 +17,7 @@ public class App {
 
         ConfigurableApplicationContext context = SpringApplication.run(App.class);
 
-        context.getBean(LibDemoService.class).commentDemo();
+        context.getBean(LibDemoService.class).bookDemo();
         /* Для принудительного закрытия Spring Boot приложения
         context.close();*/
         try {

@@ -28,7 +28,6 @@ public class BookSeviceImpl implements BookSevice{
             author = Author.builder()
                     .name(nameAuthor)
                     .build();
-            authorRepository.save(author);
         }
 
         Genre genre = genreRepository.findByName(nameGenre);
@@ -36,7 +35,6 @@ public class BookSeviceImpl implements BookSevice{
             genre = Genre.builder()
                     .name(nameGenre)
                     .build();
-            genreRepository.save(genre);
         }
 
         Book book = Book.builder()
@@ -55,7 +53,6 @@ public class BookSeviceImpl implements BookSevice{
             author = Author.builder()
                     .name(nameAuthor)
                     .build();
-            authorRepository.save(author);
         }
 
         Genre genre = genreRepository.findByName(nameGenre);
@@ -63,7 +60,6 @@ public class BookSeviceImpl implements BookSevice{
             genre = Genre.builder()
                     .name(nameGenre)
                     .build();
-            genreRepository.save(genre);
         }
 
         Book book = Book.builder()

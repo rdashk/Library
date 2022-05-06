@@ -23,14 +23,14 @@ public class Book {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(targetEntity = Author.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Author.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
     private Author author;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
     private List<Comment> commentList;
 
-    @ManyToOne(targetEntity = Genre.class, fetch = FetchType.LAZY) // Вид связи многое к одному (у одного жанра
+    @ManyToOne(targetEntity = Genre.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL) // Вид связи многое к одному (у одного жанра
     @JoinColumn(name = "genre_id")                                 // много книг), выгружаем жанр, когда необходимо
     private Genre genre;
 }
