@@ -88,11 +88,7 @@ public class LibDemoService {
             System.out.println(comment.getId() + " - " + comment.getContent());
         }
 
-        Comment comment1 = Comment.builder()
-                .content("Комментарий 5")
-                .book(bookSevice.getById(1))
-                .build();
-        commentService.insert(comment1);
+        commentService.insert("Комментарий 5", 1);
 
         commentList = commentService.getByBookId(1);
         for (Comment comment: commentList) {
