@@ -48,8 +48,8 @@ public class AuthorController {
         return AuthorDto.toDto(author);
     }
 
-    @GetMapping("/author/{name}")
-    public AuthorDto getAuthorByName(@PathVariable String name) {
+    @GetMapping("/author/name")
+    public AuthorDto getAuthorByName(@RequestParam String name) {
 
         return AuthorDto.toDto(authorService.getByName(name));
     }

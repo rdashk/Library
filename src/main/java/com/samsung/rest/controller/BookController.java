@@ -17,13 +17,16 @@ public class BookController {
 
     @GetMapping("/book")
     public List<BookDto> getAll() {
-        return bookSevice.getAll().stream().map(BookDto::toDto).collect(Collectors.toList());
+        return bookSevice.getAll()
+                .stream()
+                .map(BookDto::toDto)
+                .collect(Collectors.toList());
     }
 
     @PostMapping("/book")
-    public BookDto insert(@RequestParam String nameBook,
-                          @RequestParam String nameAuthor,
-                          @RequestParam String nameGenre) {
+    public BookDto insertBook(@RequestParam String nameBook,
+                              @RequestParam String nameAuthor,
+                              @RequestParam String nameGenre) {
         Book book = bookSevice.insert(nameBook, nameAuthor, nameGenre);
         return BookDto.toDto(book);
     }
@@ -48,8 +51,8 @@ public class BookController {
         return BookDto.toDto(book);
     }
 
-    @GetMapping("/book/{name}")
-    public List<BookDto> getBookByName(@PathVariable String name) {
+    @GetMapping("/book/name")
+    public List<BookDto> getBookByName(@RequestParam String name) {
 
         return bookSevice.getByName(name).stream().map(BookDto::toDto).collect(Collectors.toList());
     }

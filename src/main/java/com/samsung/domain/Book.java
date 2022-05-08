@@ -30,7 +30,7 @@ public class Book {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
     private List<Comment> commentList;
 
-    @ManyToOne(targetEntity = Genre.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL) // Вид связи многое к одному (у одного жанра
+    @ManyToOne(targetEntity = Genre.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) // Вид связи многое к одному (у одного жанра
     @JoinColumn(name = "genre_id")                                 // много книг), выгружаем жанр, когда необходимо
     private Genre genre;
 }
