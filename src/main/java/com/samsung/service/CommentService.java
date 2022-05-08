@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface CommentService {
 
-    Comment insert(Comment comment);
+    Comment insert(String content, int bookId);
+
+    Comment getById(int id);
 
     List<Comment> getAll();
 
